@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariyadi Kurniawan - Photography</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Portofolio</div>
+            <div class="search-bar">
+                <!-- <input type="text" placeholder="Search..."> -->
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Gallery</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Ariyadi Kurniawan</h1>
+        <p>photographer</p>
+        <a href="https://wa.me/qr/ZKDQ56A2QICUK1" class="cta-button">AYO KOLABORASI</a>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title">Alasan Memotret</h2>
+        <div class="about-content">
+            <p>Siapa pun bisa memotret, tetapi tidak semua orang mampu menangkap momen atau nuansa yang tepat. Saya paling merasa menjadi diri sendiri di belakang kamera, dan saya merasa terhubung dengan dunia melalui lensa saya.</p>
+            <p>Saya paham bahwa dari gambar akan ada memori indah yang akan tersimpan. Saya memotret karena berhasrat ingin berbagi kisah kepada dunia - dan fotografi editorial memungkinkan saya melakukannya, setiap hari.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">My Galery</h2>
+        <div class="services">
+            <div class="service-card">
+                <img src="senja.jpg" alt="senja">
+                <h3>Senja</h3>
+                <p>Senja fotografi di tengah kota</p>
+            </div>
+            <div class="service-card">
+                <img src="hujan.jpg" alt="hujan">
+                <h3>Hujan</h3>
+                <p>Hujan berbagai tempat dan lokasi di seluruh dunia</p>
+            </div>
+            <div class="service-card">
+                <img src="danau.jpg" alt="danau">
+                <h3>Danau</h3>
+                <p>Hamparan danau luas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact">
+            <div class="contact-info">
+                <h3>STUDIO</h3>
+                <p>Jl. Yos Sudarso No. 1,</p>
+                <p>Kota Lampung 34511</p>
+            </div>
+            <div class="contact-info">
+                <h3>SOSIAL</h3>
+                <a href="https://www.instagram.com/arya.krnw/profilecard/?igsh=MWhqd3p0YWw2OTY2dQ==" class="button">@arya.krnw</a>
+            </div>
+            <div class="contact-info">
+                <h3>EMAIL</h3>
+                <p>freefirebagus@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-menu');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
