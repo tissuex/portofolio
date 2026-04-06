@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
         :root {
@@ -408,13 +407,13 @@
         /* === Skills === */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
 
         .skill-card {
             text-align: center;
-            padding: 28px 16px;
+            padding: 30px 16px 24px;
             position: relative;
             overflow: hidden;
         }
@@ -425,8 +424,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: var(--skill-color, var(--gradient-primary));
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -436,10 +435,11 @@
         }
 
         .skill-card .skill-icon {
-            font-size: 38px;
-            margin-bottom: 14px;
+            font-size: 36px;
+            margin-bottom: 16px;
             display: inline-block;
             transition: all 0.4s ease;
+            color: var(--skill-color, var(--accent-3));
         }
 
         .skill-card:hover .skill-icon {
@@ -449,7 +449,7 @@
         .skill-card .skill-name {
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: var(--text-primary);
         }
 
@@ -458,60 +458,114 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
-        .skill-card:nth-child(1) .skill-icon { color: #818cf8; }
-        .skill-card:nth-child(2) .skill-icon { color: #fb7185; }
-        .skill-card:nth-child(3) .skill-icon { color: #f97316; }
-        .skill-card:nth-child(4) .skill-icon { color: #38bdf8; }
-        .skill-card:nth-child(5) .skill-icon { color: #a78bfa; }
+        .skill-card .skill-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-card .skill-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--skill-color, var(--gradient-primary));
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        .skill-card.visible .skill-bar-fill {
+            width: var(--skill-progress);
+        }
 
         /* === Contact === */
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .contact-card {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
             text-decoration: none;
             color: var(--text-primary);
+            padding: 18px 22px;
+            border-left: 3px solid transparent;
+            transition: all 0.35s ease;
+        }
+
+        .contact-card:hover {
+            border-left-color: var(--contact-accent, var(--accent-3));
+            padding-left: 26px;
         }
 
         .contact-card .contact-icon {
-            width: 44px;
-            height: 44px;
-            min-width: 44px;
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 12px;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            font-size: 20px;
+            transition: all 0.35s ease;
         }
 
         .contact-card:hover .contact-icon {
             transform: scale(1.1);
+            box-shadow: 0 0 20px var(--contact-glow, rgba(167, 139, 250, 0.2));
+        }
+
+        .contact-card .contact-info {
+            flex: 1;
+            min-width: 0;
         }
 
         .contact-card .contact-label {
             font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .contact-card .contact-value {
             font-size: 14px;
             font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
+        .contact-card .contact-arrow {
+            color: var(--text-muted);
+            font-size: 13px;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all 0.35s ease;
+        }
+
+        .contact-card:hover .contact-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-wa  { --contact-accent: #25d366; --contact-glow: rgba(37, 211, 102, 0.2); }
+        .contact-ig  { --contact-accent: #e4405f; --contact-glow: rgba(228, 64, 95, 0.2); }
+        .contact-li  { --contact-accent: #0a66c2; --contact-glow: rgba(10, 102, 194, 0.2); }
+        .contact-fb  { --contact-accent: #1877f2; --contact-glow: rgba(24, 119, 242, 0.2); }
+        .contact-gh  { --contact-accent: #e6edf3; --contact-glow: rgba(255, 255, 255, 0.15); }
 
         .contact-wa .contact-icon { background: rgba(37, 211, 102, 0.12); color: #25d366; }
         .contact-ig .contact-icon { background: rgba(228, 64, 95, 0.12); color: #e4405f; }
         .contact-li .contact-icon { background: rgba(10, 102, 194, 0.12); color: #0a66c2; }
         .contact-fb .contact-icon { background: rgba(24, 119, 242, 0.12); color: #1877f2; }
+        .contact-gh .contact-icon { background: rgba(255, 255, 255, 0.1); color: #e6edf3; }
 
         /* === Footer / Download === */
         .footer {
@@ -586,10 +640,11 @@
 
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
             .contact-grid {
-                grid-template-columns: 1fr;
+                gap: 10px;
             }
 
             .hero-actions {
@@ -638,13 +693,10 @@
                 </div>
                 <h1>Ariyadi Kurniawan</h1>
                 <p class="subtitle">
-                    S1 - <span>Sistem dan Teknologi Informasi</span> | Universitas
+                    S1 - <span>Sistem dan Teknologi Informasi</span> | Universitas Muhammadiyah Kotabumi
                 </p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary" onclick="downloadPDF()" id="btn-download">
-                        <i class="fa-solid fa-file-pdf"></i> Unduh CV
-                    </button>
-                    <a href="#contact" class="btn btn-outline">
+                    <a href="#contact" class="btn btn-primary">
                         <i class="fa-solid fa-envelope"></i> Hubungi Saya
                     </a>
                 </div>
@@ -692,41 +744,55 @@
                     </div>
                 </div>
                 <div class="contact-grid">
-                    <a href="https://wa.me/6285610090128" target="_blank" class="card contact-card contact-wa" id="contact-whatsapp">
+                    <a href="https://wa.me/6289 5610090128" target="_blank" class="card contact-card contact-wa" id="contact-whatsapp">
                         <div class="contact-icon">
                             <i class="fa-brands fa-whatsapp"></i>
                         </div>
-                        <div>
+                        <div class="contact-info">
                             <div class="contact-label">WhatsApp</div>
-                            <div class="contact-value">Chat Langsung</div>
+                            <div class="contact-value">Contact</div>
                         </div>
+                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
                     </a>
                     <a href="https://www.instagram.com/arya.krnw/" target="_blank" class="card contact-card contact-ig" id="contact-instagram">
                         <div class="contact-icon">
                             <i class="fa-brands fa-instagram"></i>
                         </div>
-                        <div>
+                        <div class="contact-info">
                             <div class="contact-label">Instagram</div>
                             <div class="contact-value">@arya.krnw</div>
                         </div>
+                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
                     </a>
-                    <a href="#" target="_blank" class="card contact-card contact-li" id="contact-linkedin">
+                    <a href="https://www.linkedin.com/in/ariyadi-kurniawan-b72212401/" target="_blank" class="card contact-card contact-li" id="contact-linkedin">
                         <div class="contact-icon">
                             <i class="fa-brands fa-linkedin-in"></i>
                         </div>
-                        <div>
+                        <div class="contact-info">
                             <div class="contact-label">LinkedIn</div>
-                            <div class="contact-value">Profil</div>
+                            <div class="contact-value">Ariyadi Kurniawan</div>
                         </div>
+                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
                     </a>
                     <a href="#" target="_blank" class="card contact-card contact-fb" id="contact-facebook">
                         <div class="contact-icon">
                             <i class="fa-brands fa-facebook-f"></i>
                         </div>
-                        <div>
+                        <div class="contact-info">
                             <div class="contact-label">Facebook</div>
                             <div class="contact-value">Profil</div>
                         </div>
+                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
+                    </a>
+                    <a href="https://github.com/tissuex" target="_blank" class="card contact-card contact-gh" id="contact-github">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">tissuex</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
                     </a>
                 </div>
             </section>
@@ -750,11 +816,12 @@
                 { "nama": "SMAN 02 Kotabumi", "tahun": "Sekolah Menengah Atas", "icon": "fa-solid fa-building-columns" }
             ],
             "keahlian": [
-                { "nama": "PHP", "icon": "fa-brands fa-php", "level": "Advanced" },
-                { "nama": "Laravel", "icon": "fa-brands fa-laravel", "level": "Intermediate" },
-                { "nama": "HTML", "icon": "fa-brands fa-html5", "level": "Advanced" },
-                { "nama": "CSS", "icon": "fa-brands fa-css3-alt", "level": "Advanced" },
-                { "nama": "JSON", "icon": "fa-solid fa-file-code", "level": "Intermediate" }
+                { "nama": "Python", "icon": "fa-brands fa-python", "level": "Beginner" },
+                { "nama": "PHP", "icon": "fa-brands fa-php", "level": "Beginner" },
+                { "nama": "Laravel", "icon": "fa-brands fa-laravel", "level": "Beginner" },
+                { "nama": "HTML", "icon": "fa-brands fa-html5", "level": "Intermediate" },
+                { "nama": "CSS", "icon": "fa-brands fa-css3-alt", "level": "Intermediate" },
+                { "nama": "JSON", "icon": "fa-solid fa-file-code", "level": "Beginner" }
             ]
         };
 
@@ -780,18 +847,44 @@
             });
 
             // Render Keahlian
+            const skillColors = {
+                'Python': '#3776AB',
+                'PHP': '#777BB4',
+                'Laravel': '#FF2D20',
+                'HTML': '#E34F26',
+                'CSS': '#1572B6',
+                'JSON': '#a78bfa'
+            };
+            const levelProgress = { 'Beginner': '35%', 'Intermediate': '60%', 'Advanced': '85%' };
+
             const skillsList = document.getElementById("skills-list");
             portfolioData.keahlian.forEach((skill, index) => {
+                const color = skillColors[skill.nama] || '#a78bfa';
+                const progress = levelProgress[skill.level] || '50%';
                 const skillCard = document.createElement("div");
                 skillCard.className = "card skill-card";
                 skillCard.style.transitionDelay = `${index * 0.08}s`;
+                skillCard.style.setProperty('--skill-color', color);
+                skillCard.style.setProperty('--skill-progress', progress);
                 skillCard.innerHTML = `
                     <i class="${skill.icon} skill-icon"></i>
                     <div class="skill-name">${skill.nama}</div>
                     <div class="skill-level">${skill.level}</div>
+                    <div class="skill-bar"><div class="skill-bar-fill"></div></div>
                 `;
                 skillsList.appendChild(skillCard);
             });
+
+            // Animate skill bars when visible
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
 
             // Intersection Observer for fade-in
             const observer = new IntersectionObserver((entries) => {
@@ -832,18 +925,6 @@
             });
         });
 
-        // 3. Fungsi Download PDF
-        function downloadPDF() {
-            const element = document.getElementById('pdf-area');
-            const opt = {
-                margin: [0.3, 0.3, 0.3, 0.3],
-                filename: 'Portofolio_Ariyadi_Kurniawan.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0a0a0f' },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
-        }
     </script>
 
 </body>
