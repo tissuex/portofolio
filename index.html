@@ -1,932 +1,494 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Ariyadi Kurniawan</title>
-    <meta name="description" content="Portofolio Ariyadi Kurniawan - S1 Sistem dan Teknologi Informasi. Web Developer dengan keahlian PHP, Laravel, HTML, CSS, dan JSON.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arya – Web Developer specializing in web development, AI, and system security. Building websites and applications for UMKM digital transformation." />
+  <title>Arya – Web Developer</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: rgba(255, 255, 255, 0.04);
-            --bg-card-hover: rgba(255, 255, 255, 0.07);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.15);
-            --text-primary: #f0f0f5;
-            --text-secondary: #9ca3af;
-            --text-muted: #6b7280;
-            --accent-1: #6366f1;
-            --accent-2: #8b5cf6;
-            --accent-3: #a78bfa;
-            --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
-            --gradient-glow: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
-            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* === Animated Background === */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .bg-gradient .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: orbFloat 20s ease-in-out infinite;
-        }
-
-        .bg-gradient .orb:nth-child(1) {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
-            top: -10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-
-        .bg-gradient .orb:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%);
-            top: 50%;
-            right: -10%;
-            animation-delay: -7s;
-        }
-
-        .bg-gradient .orb:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.2), transparent 70%);
-            bottom: -5%;
-            left: 30%;
-            animation-delay: -14s;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(60px, -40px) scale(1.1); }
-            50% { transform: translate(-30px, 50px) scale(0.95); }
-            75% { transform: translate(40px, 20px) scale(1.05); }
-        }
-
-        /* === Grid Overlay === */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        /* === Main Layout === */
-        .main-wrapper {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-        }
-
-        /* === Navigation Bar === */
-        .nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-bottom: 50px;
-            position: sticky;
-            top: 16px;
-            z-index: 100;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-bar a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-bar a:hover,
-        .nav-bar a.active {
-            color: var(--text-primary);
-            background: var(--gradient-glow);
-        }
-
-        /* === Hero Section === */
-        .hero {
-            text-align: center;
-            padding: 60px 20px 70px;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
-        }
-
-        .profile-img-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 28px;
-        }
-
-        .profile-img-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            z-index: 0;
-            animation: ringPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes ringPulse {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.03); }
-        }
-
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--bg-primary);
-            position: relative;
-            z-index: 1;
-            box-shadow: var(--shadow-glow);
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.25);
-            border-radius: 50px;
-            font-size: 12px;
-            color: #4ade80;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .status-badge .dot {
-            width: 7px;
-            height: 7px;
-            background: #4ade80;
-            border-radius: 50%;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #f0f0f5 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .hero .subtitle span {
-            color: var(--accent-3);
-            font-weight: 500;
-        }
-
-        .hero-actions {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: none;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-outline:hover {
-            color: var(--text-primary);
-            border-color: var(--border-hover);
-            background: var(--bg-card);
-        }
-
-        /* === Section Styling === */
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-
-        .section-icon {
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gradient-glow);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--accent-3);
-            font-size: 16px;
-        }
-
-        .section-header h2 {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .section-header p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        /* === Cards === */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* === Education === */
-        .edu-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .edu-card {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .edu-icon-box {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gradient-glow);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 18px;
-            color: var(--accent-3);
-        }
-
-        .edu-info h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .edu-info p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* === Skills === */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .skill-card {
-            text-align: center;
-            padding: 30px 16px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--skill-color, var(--gradient-primary));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .skill-card:hover::before {
-            opacity: 1;
-        }
-
-        .skill-card .skill-icon {
-            font-size: 36px;
-            margin-bottom: 16px;
-            display: inline-block;
-            transition: all 0.4s ease;
-            color: var(--skill-color, var(--accent-3));
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.15) translateY(-4px);
-        }
-
-        .skill-card .skill-name {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .skill-card .skill-level {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .skill-card .skill-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-card .skill-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            background: var(--skill-color, var(--gradient-primary));
-            transition: width 1s ease;
-            width: 0;
-        }
-
-        .skill-card.visible .skill-bar-fill {
-            width: var(--skill-progress);
-        }
-
-        /* === Contact === */
-        .contact-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .contact-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-            color: var(--text-primary);
-            padding: 18px 22px;
-            border-left: 3px solid transparent;
-            transition: all 0.35s ease;
-        }
-
-        .contact-card:hover {
-            border-left-color: var(--contact-accent, var(--accent-3));
-            padding-left: 26px;
-        }
-
-        .contact-card .contact-icon {
-            width: 46px;
-            height: 46px;
-            min-width: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 20px;
-            transition: all 0.35s ease;
-        }
-
-        .contact-card:hover .contact-icon {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--contact-glow, rgba(167, 139, 250, 0.2));
-        }
-
-        .contact-card .contact-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .contact-card .contact-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-card .contact-value {
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .contact-card .contact-arrow {
-            color: var(--text-muted);
-            font-size: 13px;
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: all 0.35s ease;
-        }
-
-        .contact-card:hover .contact-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .contact-wa  { --contact-accent: #25d366; --contact-glow: rgba(37, 211, 102, 0.2); }
-        .contact-ig  { --contact-accent: #e4405f; --contact-glow: rgba(228, 64, 95, 0.2); }
-        .contact-li  { --contact-accent: #0a66c2; --contact-glow: rgba(10, 102, 194, 0.2); }
-        .contact-fb  { --contact-accent: #1877f2; --contact-glow: rgba(24, 119, 242, 0.2); }
-        .contact-gh  { --contact-accent: #e6edf3; --contact-glow: rgba(255, 255, 255, 0.15); }
-
-        .contact-wa .contact-icon { background: rgba(37, 211, 102, 0.12); color: #25d366; }
-        .contact-ig .contact-icon { background: rgba(228, 64, 95, 0.12); color: #e4405f; }
-        .contact-li .contact-icon { background: rgba(10, 102, 194, 0.12); color: #0a66c2; }
-        .contact-fb .contact-icon { background: rgba(24, 119, 242, 0.12); color: #1877f2; }
-        .contact-gh .contact-icon { background: rgba(255, 255, 255, 0.1); color: #e6edf3; }
-
-        /* === Footer / Download === */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 20px;
-        }
-
-        .footer-divider {
-            width: 60px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            margin: 0 auto 24px;
-        }
-
-        .footer p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        /* === Fade-In Animation === */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === Scrollbar === */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.3);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(99, 102, 241, 0.5);
-        }
-
-        /* === Responsive === */
-        @media (max-width: 640px) {
-            .hero h1 {
-                font-size: 30px;
-            }
-
-            .hero .subtitle {
-                font-size: 14px;
-            }
-
-            .nav-bar {
-                gap: 4px;
-                padding: 8px 10px;
-            }
-
-            .nav-bar a {
-                font-size: 12px;
-                padding: 7px 10px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .contact-grid {
-                gap: 10px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .main-wrapper {
-                padding: 20px 14px 40px;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
 
-    <!-- Animated Background -->
-    <div class="bg-gradient">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <div class="logo">W<span>ELCOME</span></div>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experience">Education</a></li>
+        <li><a href="#portfolio">Project</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="#cta" class="btn btn-primary">Contact Me</a>
+      </div>
+
+      <div class="hamburger" id="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    <div class="bg-grid"></div>
+  </nav>
 
-    <div class="main-wrapper">
 
-        <!-- Navigation -->
-        <nav class="nav-bar fade-in" id="navbar">
-            <a href="#about" class="active">Profil</a>
-            <a href="#education">Pendidikan</a>
-            <a href="#skills">Keahlian</a>
-            <a href="#contact">Kontak</a>
-        </nav>
+  <section id="hero">
+    <div class="container">
+      <div class="hero-grid">
 
-        <!-- PDF Area -->
-        <div id="pdf-area">
-
-            <!-- Hero / Profile -->
-            <section class="hero fade-in" id="about">
-                <div class="profile-img-wrapper">
-                    <img src="img/profil.jpg" alt="Foto Profil Ariyadi Kurniawan" class="profile-img">
-                </div>
-                <div class="status-badge">
-                    <span class="dot"></span>
-                    Open to Opportunities
-                </div>
-                <h1>Ariyadi Kurniawan</h1>
-                <p class="subtitle">
-                    S1 - <span>Sistem dan Teknologi Informasi</span> | Universitas Muhammadiyah Kotabumi
-                </p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fa-solid fa-envelope"></i> Hubungi Saya
-                    </a>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="section fade-in" id="education">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div>
-                        <h2>Riwayat Pendidikan</h2>
-                        <p>Perjalanan akademik saya</p>
-                    </div>
-                </div>
-                <div class="edu-grid" id="education-list">
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section class="section fade-in" id="skills">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <div>
-                        <h2>Keahlian Teknis</h2>
-                        <p>Teknologi yang saya kuasai</p>
-                    </div>
-                </div>
-                <div class="skills-grid" id="skills-list">
-                </div>
-            </section>
-
-            <!-- Contact -->
-            <section class="section fade-in" id="contact">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </div>
-                    <div>
-                        <h2>Hubungi Saya</h2>
-                        <p>Mari terhubung dan berkolaborasi</p>
-                    </div>
-                </div>
-                <div class="contact-grid">
-                    <a href="https://wa.me/6289 5610090128" target="_blank" class="card contact-card contact-wa" id="contact-whatsapp">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-label">WhatsApp</div>
-                            <div class="contact-value">Contact</div>
-                        </div>
-                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
-                    </a>
-                    <a href="https://www.instagram.com/arya.krnw/" target="_blank" class="card contact-card contact-ig" id="contact-instagram">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-instagram"></i>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-label">Instagram</div>
-                            <div class="contact-value">@arya.krnw</div>
-                        </div>
-                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ariyadi-kurniawan-b72212401/" target="_blank" class="card contact-card contact-li" id="contact-linkedin">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-label">LinkedIn</div>
-                            <div class="contact-value">Ariyadi Kurniawan</div>
-                        </div>
-                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
-                    </a>
-                    <a href="#" target="_blank" class="card contact-card contact-fb" id="contact-facebook">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-label">Facebook</div>
-                            <div class="contact-value">Profil</div>
-                        </div>
-                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
-                    </a>
-                    <a href="https://github.com/tissuex" target="_blank" class="card contact-card contact-gh" id="contact-github">
-                        <div class="contact-icon">
-                            <i class="fa-brands fa-github"></i>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-label">GitHub</div>
-                            <div class="contact-value">tissuex</div>
-                        </div>
-                        <i class="fa-solid fa-arrow-right contact-arrow"></i>
-                    </a>
-                </div>
-            </section>
-
+        <!-- Hero Content -->
+        <div class="hero-left">
+          <div class="hero-badge">Hello!</div>
+          <h1 class="hero-title">
+            I'm <span class="highlight">Arya,</span><br />
+            Web Developer
+          </h1>
+          <p class="hero-desc">
+            Saya membantu UMKM dalam digitalisasi bisnis melalui web development, AI,
+            dan keamanan sistem, serta merupakan founder Landingin.
+          </p>
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">Portfolio ↗ Try Me</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Projects Done</div>
+            </div>
+            <div>
+              <div class="stat-num">99%</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="footer fade-in">
-            <div class="footer-divider"></div>
-            <p>&copy; 2026 Ariyadi Kurniawan</p>
-        </footer>
+        <!-- Hero Image -->
+        <div class="hero-img-wrap">
+          <div class="hero-img-bg"></div>
+          <div class="img-placeholder">
+            <img src="img/profil1.png" alt="Arya - Web Developer" onerror="this.parentNode.innerHTML='<span>profil1-hero-photo.png</span>'" />
+          </div>
+        </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <section id="services">
+    <div class="container">
+      <div class="services-top">
+        <div>
+          <span class="tag"></span>
+          <h2 class="section-title">Keahlian Saya</h2>
+        </div>
+        <p class="section-sub">
+          Saya membantu bisnis berkembang melalui desain yang strategis dan pengalaman digital yang efektif.
+          Dari konsep hingga implementasi, setiap detail dirancang untuk memberikan dampak nyata.
+        </p>
+      </div>
+
+      <div class="service-cards">
+        <div class="service-card fade-up">
+          <h3>UI/UX Design</h3>
+          <p>Merancang pengalaman digital yang mudah dipahami, nyaman digunakan, dan berfokus pada kebutuhan pengguna.</p>
+          <div class="service-img"><img src="img/ui-ux-preview.png" alt="UI/UX Design" /></div>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Web Design</h3>
+          <p>Website responsif dengan desain menarik yang mampu membangun kesan dan pengalaman yang berkesan.</p>
+          <div class="service-img"><img src="img/web-design-preview.png" alt="Web Design" /></div>
+        </div>
+        <div class="service-card fade-up">
+          <h3>Landing Page</h3>
+          <p>Yang dirancang untuk hasil maksimal dan pertumbuhan bisnis.</p>
+          <div class="service-img"><img src="img/landing-page-preview.png" alt="Landing Page" /></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="experience">
+    <div class="container">
+      <div class="exp-header">
+        <div>
+          <span class="tag">Perjalanan Saya</span>
+          <h2 class="section-title">Riwayat Pendidikan</h2>
+        </div>
+      </div>
+
+      <div class="exp-grid">
+        <div class="exp-list">
+          <div class="exp-item fade-up">
+            <div>
+        <div class="exp-company">Universitas Muhammadiyah Kotabumi</div>
+        <div class="exp-period">2023 – Sekarang</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-role">S1 Sistem dan Teknologi Informasi</div>
+          <div class="exp-desc">Mempelajari web development, sistem informasi, keamanan sistem, serta implementasi teknologi berbasis AI.</div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        // 1. Data JSON terintegrasi
-        const portfolioData = {
-            "sekolah": [
-                { "nama": "SDN 01 Madukoro", "tahun": "Sekolah Dasar", "icon": "fa-solid fa-school" },
-                { "nama": "SMPN 06 Kotabumi", "tahun": "Sekolah Menengah Pertama", "icon": "fa-solid fa-school-flag" },
-                { "nama": "SMAN 02 Kotabumi", "tahun": "Sekolah Menengah Atas", "icon": "fa-solid fa-building-columns" }
-            ],
-            "keahlian": [
-                { "nama": "Python", "icon": "fa-brands fa-python", "level": "Beginner" },
-                { "nama": "PHP", "icon": "fa-brands fa-php", "level": "Beginner" },
-                { "nama": "Laravel", "icon": "fa-brands fa-laravel", "level": "Beginner" },
-                { "nama": "HTML", "icon": "fa-brands fa-html5", "level": "Intermediate" },
-                { "nama": "CSS", "icon": "fa-brands fa-css3-alt", "level": "Intermediate" },
-                { "nama": "JSON", "icon": "fa-solid fa-file-code", "level": "Beginner" }
-            ]
-        };
+    <div class="exp-item fade-up">
+      <div>
+        <div class="exp-company">SMA N 02 Kotabumi</div>
+        <div class="exp-period">2020 – 2023</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-role">Jurusan IPS</div>
+          <div class="exp-desc">Mempelajari dasar-dasar ekonomi, manajemen, akuntansi, serta ilmu sosial lainnya.</div>
+        </div>
+      </div>
+    </div>
 
-        // 2. Render Data ke HTML
-        document.addEventListener("DOMContentLoaded", () => {
+    <div class="exp-item fade-up">
+      <div>
+        <div class="exp-company">SMP N 06 Kotabumi</div>
+        <div class="exp-period">2017 – 2020</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-role">Pendidikan Menengah Pertama</div>
+          <div class="exp-desc">Pada masa ini saya mulai tertarik dengan dunia teknologi dan komputer, hingga lupa waktu bermain di warnet depan sekolah.</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            // Render Riwayat Sekolah
-            const eduList = document.getElementById("education-list");
-            portfolioData.sekolah.forEach((sekolah, index) => {
-                const card = document.createElement("div");
-                card.className = "card edu-card";
-                card.style.transitionDelay = `${index * 0.1}s`;
-                card.innerHTML = `
-                    <div class="edu-icon-box">
-                        <i class="${sekolah.icon}"></i>
-                    </div>
-                    <div class="edu-info">
-                        <h3>${sekolah.nama}</h3>
-                        <p>${sekolah.tahun}</p>
-                    </div>
-                `;
-                eduList.appendChild(card);
-            });
+      </div>
+    </div>
+  </section>
 
-            // Render Keahlian
-            const skillColors = {
-                'Python': '#3776AB',
-                'PHP': '#777BB4',
-                'Laravel': '#FF2D20',
-                'HTML': '#E34F26',
-                'CSS': '#1572B6',
-                'JSON': '#a78bfa'
-            };
-            const levelProgress = { 'Beginner': '35%', 'Intermediate': '60%', 'Advanced': '85%' };
 
-            const skillsList = document.getElementById("skills-list");
-            portfolioData.keahlian.forEach((skill, index) => {
-                const color = skillColors[skill.nama] || '#a78bfa';
-                const progress = levelProgress[skill.level] || '50%';
-                const skillCard = document.createElement("div");
-                skillCard.className = "card skill-card";
-                skillCard.style.transitionDelay = `${index * 0.08}s`;
-                skillCard.style.setProperty('--skill-color', color);
-                skillCard.style.setProperty('--skill-progress', progress);
-                skillCard.innerHTML = `
-                    <i class="${skill.icon} skill-icon"></i>
-                    <div class="skill-name">${skill.nama}</div>
-                    <div class="skill-level">${skill.level}</div>
-                    <div class="skill-bar"><div class="skill-bar-fill"></div></div>
-                `;
-                skillsList.appendChild(skillCard);
-            });
+  <section id="why">
+    <div class="container">
+      <div class="why-grid">
 
-            // Animate skill bars when visible
-            const skillObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        skillObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-            document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
+        <div class="why-img-wrap">
+          <div class="why-img-bg"></div>
+          <div class="img-placeholder" style="position:relative;z-index:1;aspect-ratio:3/4;">
+            <img src="img/profil2.png" alt="Why choose me" onerror="this.innerHTML='why-photo.png'" />
+          </div>
+        </div>
 
-            // Intersection Observer for fade-in
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -40px 0px'
-            });
+        <div class="why-content">
+          <span class="tag">Mengapa Memilih Saya?</span>
+          <h2>Apa <span>yang Saya Tawarkan</span></h2>
+          <p>
+            Saya membantu bisnis berkembang melalui solusi digital yang efektif,
+            modern, dan berorientasi pada hasil.
+          </p>
+          <div class="why-stats">
+            <div class="w-stat">
+              <div class="num">100%</div>
+              <div class="lbl">Fokus Kepuasan Klien</div>
+            </div>
+            <div class="w-stat">
+              <div class="num">Fast</div>
+              <div class="lbl">Respon Cepat</div>
+            </div>
+          </div>
+          <a href="#cta" class="btn btn-primary">Hubungi Saya →</a>
+        </div>
 
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
+      </div>
+    </div>
+  </section>
 
-            // Active nav link on scroll
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-bar a');
 
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 120;
-                    if (scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
+  <section id="portfolio">
+    <div class="container">
+      <div class="port-header">
+        <div>
+          <span class="tag">My Work</span>
+          <h2 class="section-title">Yuk, lihat<br />projek yang telah saya buat</h2>
+        </div>
+        <a href="#" class="btn btn-outline">Lihat Semua</a>
+      </div>
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
+      <div class="port-grid">
+        <a href="https://lumiere-coffee.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card">
+          <div class="port-img"><img src="img/projek1.png" alt="lumiere coffe" /></div>
+          <div class="port-overlay">
+            <h3>Lumiere Coffe</h3>
+            <p>Landing Page</p>
+          </div>
+          <div class="port-label">Landing page tentang coffe shop</div>
+        </a>
+        <a href="https://nabila-laundry.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card">
+          <div class="port-img"><img src="img/projek2.png" alt="nabila laundry" /></div>
+          <div class="port-overlay">
+            <h3>Nabila Laundry</h3>
+            <p>Landing Page</p>
+          </div>
+          <div class="port-label">Landing page tentang laundry</div>
+        </a>
+      </div>
 
-    </script>
+      <!-- rencana nya bakal ada projek lain -->
+      <!-- <div class="port-tags">
+        <span class="active">Landing Page</span>
+        <span>Product Design</span>
+        <span>Animation</span>
+        <span>Glassmorphism</span>
+        <span>Cards</span>
+      </div> -->
 
+      <div class="port-desc">
+        <h4>Masih On Going!</h4>
+        <p>
+          Masih banyak projek yang akan saya buat, 
+          akan lebih banyak proyek yang saya kembangkan dengan pendekatan yang semakin matang dan berkualitas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="test-top">
+        <span class="tag">Apa Kata Klien?</span>
+        <h2 class="section-title">Cerita dari Mereka<br /><span>  Yang Pernah Bekerja Sama</span></h2>
+        <p class="section-sub">
+          Pendapat klien yang telah bekerja sama dan merasakan langsung hasil dari solusi yang saya berikan.
+        </p>
+      </div>
+
+      <div class="test-grid">
+        <div class="test-card fade-up">
+          <div class="test-stars">★★★★☆</div>
+          <p class="test-text">"Secara keseluruhan konsepnya sudah mengarah ke minimalis, namun akan lebih optimal jika bagian awal dibuat lebih clean agar lebih nyaman dilihat.
+
+Untuk referensi website yang diberikan, tampilannya sudah cukup baik dan memuaskan."</p>
+          <div class="test-author">
+            <div class="test-avatar"><img src="img/client3.png" alt="" /></div>
+            <div>
+              <div class="test-name">Iftita Handika W.</div>
+              <div class="test-role">4.0 ⭐ – Desainer Grafis</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fade-up">
+          <div class="test-stars">★★★★☆</div>
+          <p class="test-text">"Untuk website coffee, secara keseluruhan desainnya sudah terlihat menarik dan memiliki arah visual yang baik. Namun, ada sedikit catatan pada bagian menu yang jumlahnya cukup banyak, sehingga berpotensi membuat pengunjung merasa bingung saat memilih."</p>
+          <div class="test-author">
+            <div class="test-avatar"><img src="img/client2.png" alt="" /></div>
+            <div>
+              <div class="test-name">Reygie A.</div>
+              <div class="test-role">4.5 ⭐ – Mhs Ilkom & Pemasaran</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fade-up">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Desain websitenya udah keren banget coy. Overall, sudah keren!"</p>
+          <div class="test-author">
+            <div class="test-avatar"><img src="img/client1.png" alt="" /></div>
+            <div>
+              <div class="test-name">Patuhillah Seribu Daya One.</div>
+              <div class="test-role">5.0 ⭐ – Mhs Ilkom & Desainer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="tag">Hubungi Saya</span>
+        <h2>Punya Ide Keren?<br /><span>Yuk Ngobrol!</span></h2>
+        <p>Siap mengubah ide Anda menjadi sesuatu yang nyata? Mari berkolaborasi dan ciptakan sesuatu yang luar biasa bersama.</p>
+        <div class="cta-form">
+          <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat via WhatsApp</a>
+        </div>
+        <div class="cta-badges">
+          <div class="cta-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Harga Terjangkau
+          </div>
+          <div class="cta-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            24 Jam Respon (jika aktif)
+          </div>
+          <div class="cta-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Desain Modern &amp; Profesional
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>UX Design</span><span>App Design</span><span>Dashboard</span><span>Wireframe</span>
+      <span>User Research</span><span>Prototyping</span><span>Branding</span><span>UI Design</span>
+      <span>UX Design</span><span>App Design</span><span>Dashboard</span><span>Wireframe</span>
+      <span>User Research</span><span>Prototyping</span><span>Branding</span><span>UI Design</span>
+    </div>
+  </div>
+
+
+  <section id="blog">
+    <div class="container">
+      <div class="blog-header">
+        <div>
+          <span class="tag">Artikel</span>
+          <h2 class="section-title">Artikel Terbaru</h2>
+        </div>
+        <a href="#" class="btn btn-outline">Lihat Semua</a>
+      </div>
+
+      <div class="blog-grid">
+        <a href="https://www.instagram.com/p/DTchC6cD5i1/?img_index=1" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <article class="blog-card fade-up">
+          <div class="blog-img blog-img-1">
+            <img src="img/achiv.png" alt="Diterima Tim Kreatif UMKO" onerror="this.style.display='none'" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Pengumuman Seleksi</span>
+              <span class="dot-sep"></span>
+              <span class="blog-date">13 Jan, 2026</span>
+            </div>
+            <h3>Diterima sebagai Web Developer di Tim Kreatif UMKO Batch 1</h3>
+            <p>Sebuah langkah baru sebagai bagian dari Tim Kreatif UMKO, berkontribusi di bidang web development untuk menciptakan solusi digital yang bermanfaat dan berdampak.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author">Tim Kreatif UMKO</span>
+            <span class="dot-sep"></span>
+            <span class="blog-date">5 min read</span>
+          </div>
+        </article>
+        </a>
+
+        <!-- Blog card 2 (buat next time kalo ada sertif gtu atau hal lain nya wkwk)
+        <a href="#" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <article class="blog-card fade-up">
+          <div class="blog-img blog-img-2">
+            <img src="img/placeholder.png" alt="" onerror="this.style.display='none'" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Kategori</span>
+              <span class="dot-sep"></span>
+              <span class="blog-date">DD MMM, YYYY</span>
+            </div>
+            <h3>Judul Artikel</h3>
+            <p>Deskripsi singkat artikel.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author">Penulis</span>
+            <span class="dot-sep"></span>
+            <span class="blog-date">X min read</span>
+          </div>
+        </article>
+        </a>
+        -->
+
+        <!-- Blog card 3
+        <a href="#" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <article class="blog-card fade-up">
+          <div class="blog-img blog-img-3">
+            <img src="img/placeholder.png" alt="" onerror="this.style.display='none'" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Kategori</span>
+              <span class="dot-sep"></span>
+              <span class="blog-date">DD MMM, YYYY</span>
+            </div>
+            <h3>Judul Artikel</h3>
+            <p>Deskripsi singkat artikel.</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author">Penulis</span>
+            <span class="dot-sep"></span>
+            <span class="blog-date">X min read</span>
+          </div>
+        </article>
+        </a>
+        -->
+      </div>
+    </div>
+  </section>
+
+
+  <footer id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="logo">TERIMA KASIH</div>
+          <p>
+            Terima kasih sudah berkunjung di website saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin berkolaborasi.
+          </p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/ariyadi-kurniawan-b72212401/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://github.com/Tissuex" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+            <a href="https://www.instagram.com/arya.krnw/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://wa.me/62895610090128" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <div class="foot-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#blog">Blog</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <h5>Contact</h5>
+            <ul>
+              <li><a href="mailto:ariyadikurniawan01@.com">ariyadikurniawan01@.com/a></li>
+              <li><a href="tel:+62895610090128">+62 895 6100 90128</a></li>
+              <li><a href="#">Lampung, Indonesia</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© Copyright 2026 Arya.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/main.js"></script>
 </body>
-
 </html>
