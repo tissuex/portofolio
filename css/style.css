@@ -1,9 +1,3 @@
-/* ============================================
-   ARYA – Web Developer Portfolio
-   Stylesheet
-   ============================================ */
-
-/* ── VARIABLES ── */
 :root {
   --sky:       #38BDF8;
   --sky-dark:  #0EA5E9;
@@ -155,7 +149,7 @@ nav.scrolled {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
   font-size: 1.4rem;
-  color: var(--sky-dark);
+  color: var(--ink);
 }
 
 .logo span {
@@ -1266,7 +1260,7 @@ nav.scrolled {
   }
 
   .hero-img-wrap {
-    order: -1;
+    order: 1;
   }
 
   .hero-stats {

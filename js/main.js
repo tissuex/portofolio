@@ -1,9 +1,24 @@
-/* ============================================
-   ARYA – Web Developer Portfolio
-   Main JavaScript
-   ============================================ */
+import { animate, stagger, splitText } from 'https://esm.sh/animejs';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Anime.js logo text animation ──
+  const { chars } = splitText('.logo', { words: false, chars: true });
+
+  animate(chars, {
+    y: [
+      { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+      { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+    ],
+    rotate: {
+      from: '-1turn',
+      delay: 0
+    },
+    delay: stagger(50),
+    ease: 'inOutCirc',
+    loopDelay: 5000,
+    loop: true
+  });
 
   // ── Navbar scroll effect ──
   const navbar = document.getElementById('navbar');
