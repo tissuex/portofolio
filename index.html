@@ -1,217 +1,425 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Arya – Web Developer specializing in web development, AI, and system security. Building websites and applications for UMKM digital transformation." />
-  <title>Arya – Web Developer</title>
-
+  <meta name="description" content="Arya – Web Developer & AI Prompt Engineer. Membantu UMKM bertransformasi digital melalui web development, UI/UX design, dan AI engineering. Mahasiswa S1 Sistem dan Teknologi Informasi Universitas Muhammadiyah Kotabumi." />
+  <meta name="keywords" content="web developer, UI/UX designer, AI engineer, UMKM, landing page, Arya, Kotabumi, Lampung" />
+  <meta property="og:title" content="Arya – Web Developer & AI Engineer" />
+  <meta property="og:description" content="Membantu UMKM bertransformasi digital melalui web development yang berdampak nyata." />
+  <title>Arya – Web Developer & AI Engineer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
 
-  <nav id="navbar">
+  <!-- Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Section Nav Indicator -->
+  <nav class="section-dots" aria-label="Section navigation">
+    <a href="#hero" class="sdot active" data-label="Home" aria-label="Go to Home section"></a>
+    <a href="#services" class="sdot" data-label="Keahlian" aria-label="Go to Skills section"></a>
+    <a href="#experience" class="sdot" data-label="Pendidikan" aria-label="Go to Education section"></a>
+    <a href="#why" class="sdot" data-label="Tentang" aria-label="Go to About section"></a>
+    <a href="#portfolio" class="sdot" data-label="Proyek" aria-label="Go to Projects section"></a>
+    <a href="#testimonials" class="sdot" data-label="Testimoni" aria-label="Go to Testimonials section"></a>
+    <a href="#contact" class="sdot" data-label="Kontak" aria-label="Go to Contact section"></a>
+  </nav>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <div class="logo">WELCOME</div>
+      <a href="#hero" class="logo" aria-label="Arya Web Developer, go to top">
+        <span class="logo-mark">A</span>
+        <span class="logo-text">rya.</span>
+      </a>
 
-      <ul class="nav-links">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#experience">Education</a></li>
-        <li><a href="#portfolio">Project</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#hero" class="nav-link active" aria-current="page">Home</a></li>
+        <li><a href="#services" class="nav-link">Keahlian</a></li>
+        <li><a href="#experience" class="nav-link">Pendidikan</a></li>
+        <li><a href="#portfolio" class="nav-link">Proyek</a></li>
+        <li><a href="#contact" class="nav-link">Kontak</a></li>
       </ul>
 
-      <div class="nav-cta">
-        <a href="#cta" class="btn btn-primary">Contact Me</a>
-      </div>
-
-      <div class="hamburger" id="ham">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-right">
+        <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-nav" aria-label="Contact via WhatsApp">
+          <span>Hubungi Saya</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m7 7 10 10M7 17V7h10"/></svg>
+        </a>
+        <button class="hamburger" id="ham" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-nav-inner">
+      <ul role="list">
+        <li><a href="#hero" class="mnav-link" tabindex="-1">Home</a></li>
+        <li><a href="#services" class="mnav-link" tabindex="-1">Keahlian</a></li>
+        <li><a href="#experience" class="mnav-link" tabindex="-1">Pendidikan</a></li>
+        <li><a href="#portfolio" class="mnav-link" tabindex="-1">Proyek</a></li>
+        <li><a href="#testimonials" class="mnav-link" tabindex="-1">Testimoni</a></li>
+        <li><a href="#contact" class="mnav-link" tabindex="-1">Kontak</a></li>
+      </ul>
+      <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-primary mnav-cta" tabindex="-1">Chat WhatsApp</a>
+    </div>
+  </div>
 
-  <section id="hero">
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Hero section">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-grid">
+
+          <div class="hero-left">
+            <div class="hero-badge" aria-label="Status: Available for projects">
+              <span class="badge-dot" aria-hidden="true"></span>
+              Tersedia untuk proyek baru
+            </div>
+
+            <h1 class="hero-title">
+              <span class="ht-line">Membangun</span>
+              <span class="ht-line ht-accent">Pengalaman</span>
+              <span class="ht-line">Digital</span>
+              <span class="ht-line ht-sub">yang Berdampak</span>
+            </h1>
+
+            <p class="hero-desc">
+              Halo, saya <strong>Arya</strong> — Web Developer &amp; AI Prompt Engineer.
+              Saya membantu UMKM bertransformasi digital melalui web development,
+              desain UI/UX, dan solusi berbasis AI.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#portfolio" class="btn btn-primary" id="hero-cta-primary">
+                Lihat Proyek
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m7 7 10 10M7 17V7h10"/></svg>
+              </a>
+              <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" id="hero-cta-secondary">
+                Chat WhatsApp
+              </a>
+            </div>
+
+            <div class="hero-stats" role="list" aria-label="Key statistics">
+              <div class="h-stat" role="listitem">
+                <div class="hstat-num">3+</div>
+                <div class="hstat-lbl">Tahun<br/>Belajar</div>
+              </div>
+              <div class="h-stat-divider" aria-hidden="true"></div>
+              <div class="h-stat" role="listitem">
+                <div class="hstat-num">10+</div>
+                <div class="hstat-lbl">Proyek<br/>Selesai</div>
+              </div>
+              <div class="h-stat-divider" aria-hidden="true"></div>
+              <div class="h-stat" role="listitem">
+                <div class="hstat-num">99%</div>
+                <div class="hstat-lbl">Klien<br/>Puas</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right" aria-hidden="true">
+            <div class="hero-code-overlay">
+              <div class="code-block">
+                <div class="code-line"><span class="ct-keyword">const</span> <span class="ct-var">arya</span> <span class="ct-op">=</span> <span class="ct-brace">{</span></div>
+                <div class="code-line indent"><span class="ct-key">role</span><span class="ct-op">:</span> <span class="ct-str">"Web Developer"</span><span class="ct-op">,</span></div>
+                <div class="code-line indent"><span class="ct-key">focus</span><span class="ct-op">:</span> <span class="ct-str">"UMKM Digital"</span><span class="ct-op">,</span></div>
+                <div class="code-line indent"><span class="ct-key">ai</span><span class="ct-op">:</span> <span class="ct-bool">true</span><span class="ct-op">,</span></div>
+                <div class="code-line indent"><span class="ct-key">available</span><span class="ct-op">:</span> <span class="ct-bool">true</span></div>
+                <div class="code-line"><span class="ct-brace">}</span><span class="ct-op">;</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Web Development</span><span>UI/UX Design</span><span>Landing Page</span><span>AI Prompt Engineering</span>
+      <span>UMKM Digital</span><span>Sistem Informasi</span><span>Keamanan Sistem</span><span>Frontend Dev</span>
+      <span>Web Development</span><span>UI/UX Design</span><span>Landing Page</span><span>AI Prompt Engineering</span>
+      <span>UMKM Digital</span><span>Sistem Informasi</span><span>Keamanan Sistem</span><span>Frontend Dev</span>
+    </div>
+  </div>
+
+
+  <!-- SERVICES / SKILLS -->
+  <section id="services" aria-labelledby="services-title">
     <div class="container">
-      <div class="hero-grid">
 
-        <!-- Hero Content -->
-        <div class="hero-left">
-          <div class="hero-badge">Hello!</div>
-          <h1 class="hero-title">
-            I'm <span class="highlight">Arya,</span><br />
-            Web Developer
-          </h1>
-          <p class="hero-desc">
-            Saya membantu UMKM dalam digitalisasi bisnis melalui web development, AI,
-            dan keamanan sistem, serta merupakan founder Landingin.
+      <div class="section-header asymmetric">
+        <div class="sh-left">
+          <span class="tag">Keahlian Saya</span>
+          <h2 class="section-title" id="services-title">
+            Dari Konsep<br/>
+            <em>Hingga Produk</em>
+          </h2>
+        </div>
+        <div class="sh-right">
+          <p class="section-sub">
+            Saya membantu bisnis berkembang melalui desain yang strategis dan
+            pengalaman digital yang efektif. Dari konsep hingga implementasi,
+            setiap detail dirancang untuk memberikan dampak nyata.
           </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
-          </div>
-          <div class="hero-stats">
-            <div>
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div>
-              <div class="stat-num">10+</div>
-              <div class="stat-label">Projects Done</div>
-            </div>
-            <div>
-              <div class="stat-num">99%</div>
-              <div class="stat-label">Happy Clients</div>
-            </div>
-          </div>
         </div>
+      </div>
 
-        <!-- Hero Image -->
-        <div class="hero-img-wrap">
-          <div class="hero-img-bg"></div>
-          <div class="img-placeholder">
-            <img src="img/profil1.png" alt="Arya - Web Developer" onerror="this.parentNode.innerHTML='<span>profil1-hero-photo.png</span>'" />
+      <div class="skills-showcase">
+        <div class="skill-item fade-up" data-index="01">
+          <div class="skill-number" aria-hidden="true">01</div>
+          <div class="skill-body">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Merancang pengalaman digital yang mudah dipahami, nyaman digunakan, dan berfokus pada kebutuhan pengguna nyata.</p>
+            <div class="skill-img">
+              <img src="img/ui-ux-preview.png" alt="Contoh hasil UI/UX Design oleh Arya" loading="lazy" />
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-
-  <section id="services">
-    <div class="container">
-      <div class="services-top">
-        <div>
-          <span class="tag"></span>
-          <h2 class="section-title">Keahlian Saya</h2>
+        <div class="skill-item fade-up" data-index="02">
+          <div class="skill-number" aria-hidden="true">02</div>
+          <div class="skill-body">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Web Design &amp; Development</h3>
+            <p>Website responsif dengan desain menarik dan performa tinggi — dari tampilan yang memukau hingga kode yang bersih.</p>
+            <div class="skill-img">
+              <img src="img/web-design-preview.png" alt="Contoh hasil Web Design oleh Arya" loading="lazy" />
+            </div>
+          </div>
         </div>
-        <p class="section-sub">
-          Saya membantu bisnis berkembang melalui desain yang strategis dan pengalaman digital yang efektif.
-          Dari konsep hingga implementasi, setiap detail dirancang untuk memberikan dampak nyata.
-        </p>
-      </div>
 
-      <div class="service-cards">
-        <div class="service-card fade-up">
-          <h3>UI/UX Design</h3>
-          <p>Merancang pengalaman digital yang mudah dipahami, nyaman digunakan, dan berfokus pada kebutuhan pengguna.</p>
-          <div class="service-img"><img src="img/ui-ux-preview.png" alt="UI/UX Design" /></div>
+        <div class="skill-item fade-up" data-index="03">
+          <div class="skill-number" aria-hidden="true">03</div>
+          <div class="skill-body">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Landing Page UMKM</h3>
+            <p>Landing page yang dirancang untuk konversi maksimal — membantu bisnis lokal tampil profesional dan dipercaya secara digital.</p>
+            <div class="skill-img">
+              <img src="img/landing-page-preview.png" alt="Contoh Landing Page untuk UMKM oleh Arya" loading="lazy" />
+            </div>
+          </div>
         </div>
-        <div class="service-card fade-up">
-          <h3>Web Design</h3>
-          <p>Website responsif dengan desain menarik yang mampu membangun kesan dan pengalaman yang berkesan.</p>
-          <div class="service-img"><img src="img/web-design-preview.png" alt="Web Design" /></div>
-        </div>
-        <div class="service-card fade-up">
-          <h3>Landing Page</h3>
-          <p>Yang dirancang untuk hasil maksimal dan pertumbuhan bisnis.</p>
-          <div class="service-img"><img src="img/landing-page-preview.png" alt="Landing Page" /></div>
-          
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <section id="experience">
-    <div class="container">
-      <div class="exp-header">
-        <div>
-          <span class="tag">Perjalanan Saya</span>
-          <h2 class="section-title">Riwayat Pendidikan</h2>
-        </div>
-      </div>
-
-      <div class="exp-grid">
-        <div class="exp-list">
-          <div class="exp-item fade-up">
-            <div>
-        <div class="exp-company">Universitas Muhammadiyah Kotabumi</div>
-        <div class="exp-period">2023 – Sekarang</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-role">S1 Sistem dan Teknologi Informasi</div>
-          <div class="exp-desc">Mempelajari web development, sistem informasi, keamanan sistem, serta implementasi teknologi berbasis AI.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item fade-up">
-      <div>
-        <div class="exp-company">SMA N 02 Kotabumi</div>
-        <div class="exp-period">2020 – 2023</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-role">Jurusan IPS</div>
-          <div class="exp-desc">Mempelajari dasar-dasar ekonomi, manajemen, akuntansi, serta ilmu sosial lainnya.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item fade-up">
-      <div>
-        <div class="exp-company">SMP N 06 Kotabumi</div>
-        <div class="exp-period">2017 – 2020</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-role">Pendidikan Menengah Pertama</div>
-          <div class="exp-desc">Pada masa ini saya mulai tertarik dengan dunia teknologi dan komputer, hingga lupa waktu bermain di warnet depan sekolah.</div>
+        <div class="skill-item fade-up" data-index="04">
+          <div class="skill-number" aria-hidden="true">04</div>
+          <div class="skill-body">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <h3>AI Prompt Engineering</h3>
+            <p>Merancang dan mengoptimalkan prompt AI untuk menghasilkan konten, kode, dan solusi yang lebih efisien dan berkualitas.</p>
+            <div class="skill-img skill-img-ai">
+              <div class="skill-ai-visual" aria-label="AI prompt example">
+                <div class="ai-line"><span class="ai-prompt">&gt; Generate responsive navbar</span></div>
+                <div class="ai-line ai-response"><span>Done — 24 lines, 60fps</span></div>
+                <div class="ai-line"><span class="ai-prompt">&gt; Optimize for mobile</span></div>
+                <div class="ai-line ai-response"><span>Media queries applied</span></div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+
     </div>
   </section>
 
 
-  <section id="why">
+  <!-- EDUCATION -->
+  <section id="experience" aria-labelledby="exp-title">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="tag">Perjalanan Saya</span>
+        <h2 class="section-title" id="exp-title">Riwayat<br/><em>Pendidikan</em></h2>
+      </div>
+
+      <div class="timeline" role="list" aria-label="Education timeline">
+
+        <div class="tl-item fade-up" role="listitem">
+          <div class="tl-left">
+            <div class="tl-period">2023 – Sekarang</div>
+            <div class="tl-institution">Universitas Muhammadiyah Kotabumi</div>
+          </div>
+          <div class="tl-connector" aria-hidden="true">
+            <div class="tl-dot current"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <h3 class="tl-role">S1 Sistem dan Teknologi Informasi</h3>
+            <p class="tl-desc">Mempelajari web development, sistem informasi, keamanan sistem, serta implementasi teknologi berbasis AI. Aktif sebagai anggota Tim Kreatif UMKO batch pertama.</p>
+            <div class="tl-tags" aria-label="Skills learned">
+              <span>Web Dev</span>
+              <span>AI</span>
+              <span>Sistem Informasi</span>
+              <span>Keamanan Sistem</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item fade-up" role="listitem">
+          <div class="tl-left">
+            <div class="tl-period">2020 – 2023</div>
+            <div class="tl-institution">SMA N 02 Kotabumi</div>
+          </div>
+          <div class="tl-connector" aria-hidden="true">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <h3 class="tl-role">Jurusan IPS</h3>
+            <p class="tl-desc">Mempelajari dasar-dasar ekonomi, manajemen, akuntansi, serta ilmu sosial — fondasi yang ternyata sangat membantu dalam memahami kebutuhan bisnis klien.</p>
+            <div class="tl-tags" aria-label="Subjects studied">
+              <span>Ekonomi</span>
+              <span>Manajemen</span>
+              <span>Akuntansi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item fade-up" role="listitem">
+          <div class="tl-left">
+            <div class="tl-period">2017 – 2020</div>
+            <div class="tl-institution">SMP N 06 Kotabumi</div>
+          </div>
+          <div class="tl-connector" aria-hidden="true">
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-right">
+            <h3 class="tl-role">Pendidikan Menengah Pertama</h3>
+            <p class="tl-desc">Di sinilah semua bermula. Saya mulai tertarik dengan dunia teknologi dan komputer — hingga lupa waktu bermain di warnet depan sekolah. Awal dari sebuah perjalanan panjang.</p>
+            <div class="tl-tags" aria-label="Beginning">
+              <span>Awal Mula</span>
+              <span>Teknologi</span>
+              <span>Komputer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- WHY ME -->
+  <section id="why" aria-labelledby="why-title">
+    <div class="why-bg-accent" aria-hidden="true"></div>
     <div class="container">
       <div class="why-grid">
 
-        <div class="why-img-wrap">
-          <div class="why-img-bg"></div>
-          <div class="img-placeholder" style="position:relative;z-index:1;aspect-ratio:3/4;">
-            <img src="img/profil2.png" alt="Why choose me" onerror="this.innerHTML='why-photo.png'" />
+        <div class="why-visual fade-up" aria-hidden="true">
+          <div class="why-img-frame">
+            <div class="wif-corner tl"></div>
+            <div class="wif-corner tr"></div>
+            <div class="wif-corner bl"></div>
+            <div class="wif-corner br"></div>
+            <img src="img/profil2.png" alt="Foto profil Arya, Web Developer" loading="lazy" />
+          </div>
+          <div class="why-float-card wfc-1" aria-hidden="true">
+            <div class="wfc-icon">&#10003;</div>
+            <div>
+              <div class="wfc-title">Deadline Terjaga</div>
+              <div class="wfc-sub">Komitmen penuh</div>
+            </div>
+          </div>
+          <div class="why-float-card wfc-2" aria-hidden="true">
+            <div class="wfc-icon">&#9889;</div>
+            <div>
+              <div class="wfc-title">Respon Cepat</div>
+              <div class="wfc-sub">Via WhatsApp</div>
+            </div>
           </div>
         </div>
 
         <div class="why-content">
           <span class="tag">Mengapa Memilih Saya?</span>
-          <h2>Apa <span>yang Saya Tawarkan</span></h2>
+          <h2 class="section-title" id="why-title">
+            Apa yang Saya<br/>
+            <em>Tawarkan</em>
+          </h2>
           <p>
             Saya dapat bekerja dengan tim maupun individu, sesuai dengan deadline yang diberikan.
-            Menurut saya, tidak ada kata terlambat jika kita mau memulai nya.
+            Menurut saya, tidak ada kata terlambat jika kita mau memulainya.
           </p>
-          <div class="why-stats">
-            <div class="w-stat">
-              <div class="num">100%</div>
-              <div class="lbl">Fokus Kepuasan Klien</div>
+
+          <div class="why-features" role="list">
+            <div class="wf-item fade-up" role="listitem">
+              <div class="wfi-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="wfi-title">100% Fokus Kepuasan Klien</div>
+                <div class="wfi-sub">Revisi sampai Anda puas dengan hasilnya</div>
+              </div>
             </div>
-            <div class="w-stat">
-              <div class="num">Fast</div>
-              <div class="lbl">Respon Cepat</div>
+            <div class="wf-item fade-up" role="listitem">
+              <div class="wfi-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="wfi-title">Harga Terjangkau</div>
+                <div class="wfi-sub">Solusi premium tanpa menguras kantong</div>
+              </div>
+            </div>
+            <div class="wf-item fade-up" role="listitem">
+              <div class="wfi-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="wfi-title">Desain Modern &amp; Profesional</div>
+                <div class="wfi-sub">Mengikuti tren dan standar industri terkini</div>
+              </div>
+            </div>
+            <div class="wf-item fade-up" role="listitem">
+              <div class="wfi-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="wfi-title">24 Jam Respon (jika aktif)</div>
+                <div class="wfi-sub">Komunikasi lancar selama proyek berlangsung</div>
+              </div>
             </div>
           </div>
-          <a href="#cta" class="btn btn-primary">Hubungi Saya →</a>
+
+          <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-primary why-cta">
+            Hubungi Saya Sekarang
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
 
       </div>
@@ -219,128 +427,270 @@
   </section>
 
 
-  <section id="portfolio">
+  <!-- PORTFOLIO -->
+  <section id="portfolio" aria-labelledby="portfolio-title">
     <div class="container">
-      <div class="port-header">
-        <div>
+
+      <div class="section-header asymmetric">
+        <div class="sh-left">
           <span class="tag">My Work</span>
-          <h2 class="section-title">Yuk, lihat<br />projek yang telah saya buat</h2>
+          <h2 class="section-title" id="portfolio-title">
+            Proyek yang<br/>
+            <em>Telah Saya Bangun</em>
+          </h2>
         </div>
-        <a href="#" class="btn btn-outline">Lihat Semua</a>
+        <div class="sh-right">
+          <p class="section-sub">
+            Setiap proyek punya cerita — masalah nyata dari bisnis nyata,
+            diselesaikan dengan pendekatan yang tepat.
+          </p>
+        </div>
       </div>
 
-      <div class="port-grid">
-        <a href="https://lumiere-coffee.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card">
-          <div class="port-img"><img src="img/projek1.png" alt="lumiere coffe" /></div>
-          <div class="port-overlay">
-            <h3>Lumiere Coffe</h3>
-            <p>Landing Page</p>
+      <div class="projects-stack">
+
+        <article class="project-item fade-up" aria-label="Project: Lumiere Coffee">
+          <div class="pi-number" aria-hidden="true">01</div>
+          <div class="pi-img">
+            <a href="https://lumiere-coffee.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Lihat live preview Lumiere Coffee">
+              <img src="img/projek1.png" alt="Screenshot website Lumiere Coffee — landing page coffee shop" loading="lazy" />
+              <div class="pi-img-overlay" aria-hidden="true">
+                <span>Lihat Live &#8599;</span>
+              </div>
+            </a>
           </div>
-          <div class="port-label">Landing page tentang coffe shop</div>
-        </a>
-        <a href="https://nabila-laundry.vercel.app/" target="_blank" rel="noopener noreferrer" class="port-card">
-          <div class="port-img"><img src="img/projek2.png" alt="nabila laundry" /></div>
-          <div class="port-overlay">
-            <h3>Nabila Laundry</h3>
-            <p>Landing Page</p>
+          <div class="pi-content">
+            <div class="pi-meta">
+              <span class="pi-type">Landing Page</span>
+              <span class="pi-dot" aria-hidden="true">&#183;</span>
+              <span class="pi-client">UMKM – Coffee Shop</span>
+            </div>
+            <h3 class="pi-title">Lumiere Coffee</h3>
+            <p class="pi-desc">
+              Landing page untuk bisnis coffee shop dengan visual yang hangat dan elegan.
+              Dirancang untuk meningkatkan kepercayaan pelanggan dan mendorong kunjungan ke toko fisik.
+            </p>
+            <div class="pi-process">
+              <div class="pip-item">
+                <span class="pip-label">Masalah</span>
+                <span class="pip-val">Bisnis belum punya kehadiran digital yang profesional</span>
+              </div>
+              <div class="pip-item">
+                <span class="pip-label">Pendekatan</span>
+                <span class="pip-val">Desain visual-first dengan UI yang menceritakan brand</span>
+              </div>
+              <div class="pip-item">
+                <span class="pip-label">Hasil</span>
+                <span class="pip-val">Website responsif yang siap publik dan SEO-friendly</span>
+              </div>
+            </div>
+            <div class="pi-tags" aria-label="Technologies used">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+            </div>
+            <a href="https://lumiere-coffee.vercel.app/" target="_blank" rel="noopener noreferrer" class="pi-link">
+              Lihat Live Preview
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m7 7 10 10M7 17V7h10"/></svg>
+            </a>
           </div>
-          <div class="port-label">Landing page tentang laundry</div>
-        </a>
+        </article>
+
+        <article class="project-item pi-reverse fade-up" aria-label="Project: Nabila Laundry">
+          <div class="pi-number" aria-hidden="true">02</div>
+          <div class="pi-img">
+            <a href="https://nabila-laundry.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Lihat live preview Nabila Laundry">
+              <img src="img/projek2.png" alt="Screenshot website Nabila Laundry — landing page jasa laundry" loading="lazy" />
+              <div class="pi-img-overlay" aria-hidden="true">
+                <span>Lihat Live &#8599;</span>
+              </div>
+            </a>
+          </div>
+          <div class="pi-content">
+            <div class="pi-meta">
+              <span class="pi-type">Landing Page</span>
+              <span class="pi-dot" aria-hidden="true">&#183;</span>
+              <span class="pi-client">UMKM – Jasa Laundry</span>
+            </div>
+            <h3 class="pi-title">Nabila Laundry</h3>
+            <p class="pi-desc">
+              Landing page untuk bisnis laundry lokal yang ingin menjangkau lebih banyak pelanggan secara online.
+              Tampilan clean, informasi jelas, dan integrasi kontak yang mudah.
+            </p>
+            <div class="pi-process">
+              <div class="pip-item">
+                <span class="pip-label">Masalah</span>
+                <span class="pip-val">Pelanggan baru sulit menemukan dan mempercayai bisnis</span>
+              </div>
+              <div class="pip-item">
+                <span class="pip-label">Pendekatan</span>
+                <span class="pip-val">Informasi terstruktur dengan call-to-action yang jelas</span>
+              </div>
+              <div class="pip-item">
+                <span class="pip-label">Hasil</span>
+                <span class="pip-val">Platform digital yang memudahkan pelanggan menghubungi bisnis</span>
+              </div>
+            </div>
+            <div class="pi-tags" aria-label="Technologies used">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+            </div>
+            <a href="https://nabila-laundry.vercel.app/" target="_blank" rel="noopener noreferrer" class="pi-link">
+              Lihat Live Preview
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m7 7 10 10M7 17V7h10"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <div class="project-coming fade-up" aria-label="More projects coming soon">
+          <div class="pc-inner">
+            <div class="pc-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3>Masih On Going!</h3>
+            <p>Akan lebih banyak proyek yang saya kembangkan dengan pendekatan yang semakin matang dan berkualitas.</p>
+            <a href="https://github.com/Tissuex" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-dark">
+              Lihat GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <!-- rencana nya bakal ada projek lain -->
-      <!-- <div class="port-tags">
-        <span class="active">Landing Page</span>
-        <span>Product Design</span>
-        <span>Animation</span>
-        <span>Glassmorphism</span>
-        <span>Cards</span>
-      </div> -->
-
-      <div class="port-desc">
-        <h4>Masih On Going!</h4>
-        <p>
-          Masih banyak projek yang akan saya buat, 
-          akan lebih banyak proyek yang saya kembangkan dengan pendekatan yang semakin matang dan berkualitas.
-        </p>
-      </div>
     </div>
   </section>
 
 
-  <section id="testimonials">
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" aria-labelledby="test-title">
+    <div class="test-bg-glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="test-top">
-        <span class="tag">Apa Kata Klien?</span>
-        <h2 class="section-title">Cerita dari Mereka<br /><span>  Yang Pernah Bekerja Sama</span></h2>
-        <p class="section-sub">
+
+      <div class="section-header centered">
+        <span class="tag tag-light">Apa Kata Klien?</span>
+        <h2 class="section-title light" id="test-title">
+          Cerita dari Mereka<br/>
+          <em>yang Pernah Bekerja Sama</em>
+        </h2>
+        <p class="section-sub light">
           Pendapat klien yang telah bekerja sama dan merasakan langsung hasil dari solusi yang saya berikan.
         </p>
       </div>
 
-      <div class="test-grid">
-        <div class="test-card fade-up">
-          <div class="test-stars">★★★★☆</div>
-          <p class="test-text">"Secara keseluruhan konsepnya sudah mengarah ke minimalis, namun akan lebih optimal jika bagian awal dibuat lebih clean agar lebih nyaman dilihat.
+      <div class="test-grid" role="list" aria-label="Client testimonials">
 
-Untuk referensi website yang diberikan, tampilannya sudah cukup baik dan memuaskan."</p>
+        <article class="test-card fade-up" role="listitem">
+          <div class="test-quote" aria-hidden="true">"</div>
+          <div class="test-stars" aria-label="Rating: 4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <p class="test-text">"Secara keseluruhan konsepnya sudah mengarah ke minimalis, namun akan lebih optimal jika bagian awal dibuat lebih clean agar lebih nyaman dilihat. Untuk referensi website yang diberikan, tampilannya sudah cukup baik dan memuaskan."</p>
           <div class="test-author">
-            <div class="test-avatar"><img src="img/client3.png" alt="" /></div>
+            <div class="test-avatar">
+              <img src="img/client3.png" alt="Foto Iftita Handika W." loading="lazy" />
+            </div>
             <div>
               <div class="test-name">Iftita Handika W.</div>
-              <div class="test-role">4.0 ⭐ – Desainer Grafis</div>
+              <div class="test-role">4.0 &#11088; &middot; Desainer Grafis</div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="test-card fade-up">
-          <div class="test-stars">★★★★☆</div>
-          <p class="test-text">"Untuk website coffee, secara keseluruhan desainnya sudah terlihat menarik dan memiliki arah visual yang baik. Namun, ada sedikit catatan pada bagian menu yang jumlahnya cukup banyak, sehingga berpotensi membuat pengunjung merasa bingung saat memilih."</p>
-          <div class="test-author">
-            <div class="test-avatar"><img src="img/client2.png" alt="" /></div>
-            <div>
-              <div class="test-name">Reygie A.</div>
-              <div class="test-role">4.5 ⭐ – Mhs Ilkom & Pemasaran</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="test-card fade-up">
-          <div class="test-stars">★★★★★</div>
+        <article class="test-card test-card-featured fade-up" role="listitem">
+          <div class="test-quote" aria-hidden="true">"</div>
+          <div class="test-stars" aria-label="Rating: 5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="test-text">"Desain websitenya udah keren banget coy. Overall, sudah keren!"</p>
           <div class="test-author">
-            <div class="test-avatar"><img src="img/client1.png" alt="" /></div>
+            <div class="test-avatar">
+              <img src="img/client1.png" alt="Foto Patuhillah Seribu Daya One." loading="lazy" />
+            </div>
             <div>
               <div class="test-name">Patuhillah Seribu Daya One.</div>
-              <div class="test-role">5.0 ⭐ – Mhs Ilkom & Desainer</div>
+              <div class="test-role">5.0 &#11088; &middot; Mhs Ilkom &amp; Desainer</div>
             </div>
           </div>
-        </div>
+        </article>
+
+        <article class="test-card fade-up" role="listitem">
+          <div class="test-quote" aria-hidden="true">"</div>
+          <div class="test-stars" aria-label="Rating: 4.5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <p class="test-text">"Untuk website coffee, secara keseluruhan desainnya sudah terlihat menarik dan memiliki arah visual yang baik. Namun, ada sedikit catatan pada bagian menu yang jumlahnya cukup banyak, sehingga berpotensi membuat pengunjung merasa bingung saat memilih."</p>
+          <div class="test-author">
+            <div class="test-avatar">
+              <img src="img/client2.png" alt="Foto Reygie A." loading="lazy" />
+            </div>
+            <div>
+              <div class="test-name">Reygie A.</div>
+              <div class="test-role">4.5 &#11088; &middot; Mhs Ilkom &amp; Pemasaran</div>
+            </div>
+          </div>
+        </article>
+
       </div>
+
     </div>
   </section>
 
 
-  <section id="cta">
+  <!-- BLOG -->
+  <section id="blog" aria-labelledby="blog-title">
+    <div class="container">
+
+      <div class="section-header asymmetric">
+        <div class="sh-left">
+          <span class="tag">Artikel &amp; Update</span>
+          <h2 class="section-title" id="blog-title">Terbaru dari<br/><em>Perjalanan Saya</em></h2>
+        </div>
+        <div class="sh-right">
+          <p class="section-sub">Pengumuman, pencapaian, dan hal-hal menarik yang terjadi dalam perjalanan saya sebagai developer.</p>
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <a href="https://www.instagram.com/p/DTchC6cD5i1/?img_index=1" target="_blank" rel="noopener noreferrer" class="blog-card fade-up" aria-label="Baca artikel: Diterima sebagai Web Developer di Tim Kreatif UMKO Batch 1">
+          <div class="bc-img">
+            <img src="img/achiv.png" alt="Pengumuman diterima di Tim Kreatif UMKO Batch 1" loading="lazy" />
+          </div>
+          <div class="bc-body">
+            <div class="bc-meta">
+              <span class="bc-cat">Pengumuman Seleksi</span>
+              <span class="bc-date">13 Jan, 2026</span>
+            </div>
+            <h3>Diterima sebagai Web Developer di Tim Kreatif UMKO Batch 1</h3>
+            <p>Sebuah langkah baru sebagai bagian dari Tim Kreatif UMKO, berkontribusi di bidang web development untuk menciptakan solusi digital yang bermanfaat.</p>
+            <div class="bc-footer">
+              <span class="bc-author">Tim Kreatif UMKO</span>
+              <span class="bc-read">5 min read &#8594;</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section id="cta" aria-labelledby="cta-title">
     <div class="container">
       <div class="cta-inner">
-        <span class="tag">Hubungi Saya</span>
-        <h2>Punya Ide Keren?<br /><span>Yuk Ngobrol!</span></h2>
+        <span class="tag tag-amber">Mulai Kolaborasi</span>
+        <h2 id="cta-title">
+          Punya Ide Keren?<br/>
+          <em>Yuk Ngobrol!</em>
+        </h2>
         <p>Siap mengubah ide Anda menjadi sesuatu yang nyata? Mari berkolaborasi dan ciptakan sesuatu yang luar biasa bersama.</p>
-        <div class="cta-form">
-          <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat via WhatsApp</a>
-        </div>
-        <div class="cta-badges">
+        <a href="https://wa.me/62895610090128" target="_blank" rel="noopener noreferrer" class="btn btn-wa" id="cta-wa-btn" aria-label="Hubungi Arya via WhatsApp">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat via WhatsApp
+        </a>
+        <div class="cta-badges" aria-label="Key benefits">
           <div class="cta-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             Harga Terjangkau
           </div>
           <div class="cta-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             24 Jam Respon (jika aktif)
           </div>
           <div class="cta-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             Desain Modern &amp; Profesional
           </div>
         </div>
@@ -349,145 +699,64 @@ Untuk referensi website yang diberikan, tampilannya sudah cukup baik dan memuask
   </section>
 
 
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>UX Design</span><span>App Design</span><span>Dashboard</span><span>Wireframe</span>
-      <span>User Research</span><span>Prototyping</span><span>Branding</span><span>UI Design</span>
-      <span>UX Design</span><span>App Design</span><span>Dashboard</span><span>Wireframe</span>
-      <span>User Research</span><span>Prototyping</span><span>Branding</span><span>UI Design</span>
-    </div>
-  </div>
-
-
-  <section id="blog">
+  <!-- FOOTER -->
+  <footer id="contact" role="contentinfo">
     <div class="container">
-      <div class="blog-header">
-        <div>
-          <span class="tag">Artikel</span>
-          <h2 class="section-title">Artikel Terbaru</h2>
-        </div>
-        <a href="#" class="btn btn-outline">Lihat Semua</a>
-      </div>
+      <div class="footer-grid">
 
-      <div class="blog-grid">
-        <a href="https://www.instagram.com/p/DTchC6cD5i1/?img_index=1" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-        <article class="blog-card fade-up">
-          <div class="blog-img blog-img-1">
-            <img src="img/achiv.png" alt="Diterima Tim Kreatif UMKO" onerror="this.style.display='none'" />
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span class="blog-cat">Pengumuman Seleksi</span>
-              <span class="dot-sep"></span>
-              <span class="blog-date">13 Jan, 2026</span>
-            </div>
-            <h3>Diterima sebagai Web Developer di Tim Kreatif UMKO Batch 1</h3>
-            <p>Sebuah langkah baru sebagai bagian dari Tim Kreatif UMKO, berkontribusi di bidang web development untuk menciptakan solusi digital yang bermanfaat dan berdampak.</p>
-          </div>
-          <div class="blog-footer">
-            <span class="blog-author">Tim Kreatif UMKO</span>
-            <span class="dot-sep"></span>
-            <span class="blog-date">5 min read</span>
-          </div>
-        </article>
-        </a>
-
-        <!-- Blog card 2 (buat next time kalo ada sertif gtu atau hal lain nya wkwk)
-        <a href="#" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-        <article class="blog-card fade-up">
-          <div class="blog-img blog-img-2">
-            <img src="img/placeholder.png" alt="" onerror="this.style.display='none'" />
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span class="blog-cat">Kategori</span>
-              <span class="dot-sep"></span>
-              <span class="blog-date">DD MMM, YYYY</span>
-            </div>
-            <h3>Judul Artikel</h3>
-            <p>Deskripsi singkat artikel.</p>
-          </div>
-          <div class="blog-footer">
-            <span class="blog-author">Penulis</span>
-            <span class="dot-sep"></span>
-            <span class="blog-date">X min read</span>
-          </div>
-        </article>
-        </a>
-        -->
-
-        <!-- Blog card 3
-        <a href="#" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-        <article class="blog-card fade-up">
-          <div class="blog-img blog-img-3">
-            <img src="img/placeholder.png" alt="" onerror="this.style.display='none'" />
-          </div>
-          <div class="blog-body">
-            <div class="blog-meta">
-              <span class="blog-cat">Kategori</span>
-              <span class="dot-sep"></span>
-              <span class="blog-date">DD MMM, YYYY</span>
-            </div>
-            <h3>Judul Artikel</h3>
-            <p>Deskripsi singkat artikel.</p>
-          </div>
-          <div class="blog-footer">
-            <span class="blog-author">Penulis</span>
-            <span class="dot-sep"></span>
-            <span class="blog-date">X min read</span>
-          </div>
-        </article>
-        </a>
-        -->
-      </div>
-    </div>
-  </section>
-
-
-  <footer id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-left">
-          <div class="logo">TERIMA KASIH</div>
-          <p>
-            Terima kasih sudah berkunjung di website saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin berkolaborasi.
-          </p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/ariyadi-kurniawan-b72212401/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-            <a href="https://github.com/Tissuex" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-            <a href="https://www.instagram.com/arya.krnw/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-            <a href="https://wa.me/62895610090128" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo" aria-label="Arya Web Developer, go to top">
+            <span class="logo-mark">A</span>
+            <span class="logo-text">rya.</span>
+          </a>
+          <p>Terima kasih sudah berkunjung ke website saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin berkolaborasi.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/ariyadi-kurniawan-b72212401/" class="social-link" aria-label="LinkedIn profile" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/Tissuex" class="social-link" aria-label="GitHub profile" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://www.instagram.com/arya.krnw/" class="social-link" aria-label="Instagram profile" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://wa.me/62895610090128" class="social-link" aria-label="Contact via WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
           </div>
         </div>
 
-        <div class="contact-right">
-          <div class="foot-col">
-            <h5>Navigation</h5>
-            <ul>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="fn-col">
+            <h5>Navigasi</h5>
+            <ul role="list">
               <li><a href="#hero">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#blog">Blog</a></li>
+              <li><a href="#services">Keahlian</a></li>
+              <li><a href="#portfolio">Proyek</a></li>
+              <li><a href="#blog">Artikel</a></li>
             </ul>
           </div>
-          <div class="foot-col">
-            <h5>Contact</h5>
-            <ul>
-              <li><a href="mailto:ariyadikurniawan01@.com">ariyadikurniawan01@gmail.com</li>
+          <div class="fn-col">
+            <h5>Kontak</h5>
+            <ul role="list">
+              <li><a href="mailto:ariyadikurniawan01@gmail.com">ariyadikurniawan01@gmail.com</a></li>
               <li><a href="tel:+62895610090128">+62 895 6100 90128</a></li>
-              <li><a href="#">Lampung, Indonesia</a></li>
+              <li><a href="#contact">Lampung, Indonesia</a></li>
             </ul>
           </div>
-        </div>
+        </nav>
+
       </div>
 
       <div class="footer-bottom">
-        <p>© Copyright 2026 Arya.</p>
+        <p>&copy; 2026 Arya. Dibuat dengan &#9829; dari Lampung.</p>
+        <p class="footer-stack">HTML &middot; CSS &middot; JavaScript &middot; Three.js</p>
       </div>
     </div>
   </footer>
 
 
   <script type="module" src="js/main.js"></script>
+
 </body>
 </html>
