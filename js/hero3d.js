@@ -77,6 +77,9 @@ export function initHero3D(canvasEl) {
   rimLight.position.set(-4, -2, -4);
   scene.add(rimLight);
 
+  // Mobile adaptive layout check
+  updateResponsive3D(w);
+
   // Events
   window.addEventListener('resize', onResize);
 
@@ -92,6 +95,16 @@ export function initHero3D(canvasEl) {
 
   startLoop();
   return true;
+}
+
+function updateResponsive3D(width) {
+  const isMobile = width < 800;
+  if (browserFrame) {
+    browserFrame.visible = !isMobile;
+  }
+  floatingPanels.forEach(p => {
+    p.visible = !isMobile;
+  });
 }
 
 function buildGrid(THREE) {
@@ -328,6 +341,7 @@ function onResize() {
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
+  updateResponsive3D(w);
 }
 
 export function updateMouse(nx, ny) {

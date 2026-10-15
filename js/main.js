@@ -233,6 +233,12 @@ function initFadeUp() {
   const elements = document.querySelectorAll('.fade-up');
   if (!elements.length) return;
 
+  // On mobile screens, immediately reveal to prevent blank sections while scrolling
+  if (window.innerWidth <= 768) {
+    elements.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
@@ -242,7 +248,7 @@ function initFadeUp() {
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.02, rootMargin: '80px 0px 80px 0px' }
   );
 
   elements.forEach(el => observer.observe(el));
