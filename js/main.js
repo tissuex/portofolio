@@ -32,6 +32,9 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 // ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
 
+  // ── Theme (Dark / Light Mode) ──
+  initTheme();
+
   // ── Navbar ──
   initNavbar();
 
@@ -88,6 +91,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.addEventListener('pagehide', destroyHero3D);
 
 });
+
+
+// ────────────────────────────────────────────────────────
+// THEME MODULE (Dark / Light Mode)
+// ────────────────────────────────────────────────────────
+function initTheme() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  const STORAGE_KEY = 'arya-theme';
+  const prefersDark  = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Determine initial theme: saved → system preference → 'light'
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const initial = saved ?? (prefersDark ? 'dark' : 'light');
+  applyTheme(initial);
+
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') ?? 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Sync when OS preference changes (no saved preference)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.setAttribute('title', theme === 'dark' ? 'Mode Terang' : 'Mode Gelap');
+  }
+}
 
 
 // ────────────────────────────────────────────────────────
